@@ -49,9 +49,9 @@ $page[ 'body' ] = <<<EOF
 			<select name="default">
 				<script>
 					if (document.location.href.indexOf("default=") >= 0) {
-						var lang = document.location.href.substring(document.location.href.indexOf("default=")+8);
-						document.write("<option value='" + lang + "'>" + $decodeURI(lang) + "</option>");
-						document.write("<option value='' disabled='disabled'>----</option>");
+						const params = new URLSearchParams(window.location.hash);
+						const safeText = document.createTextNode(params.toString());
+						document.getElementById("output").appendChild(safeText);
 					}
 					    
 					document.write("<option value='English'>English</option>");
